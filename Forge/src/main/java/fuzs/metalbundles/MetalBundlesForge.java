@@ -4,6 +4,7 @@ import fuzs.metalbundles.data.ModItemContainerProvider;
 import fuzs.metalbundles.data.ModLanguageProvider;
 import fuzs.metalbundles.data.ModModelProvider;
 import fuzs.metalbundles.data.ModRecipeProvider;
+import fuzs.puzzleslib.api.core.v1.ContentRegistrationFlags;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -22,7 +23,7 @@ public class MetalBundlesForge {
 
     @SubscribeEvent
     public static void onConstructMod(final FMLConstructModEvent evt) {
-        ModConstructor.construct(MetalBundles.MOD_ID, MetalBundles::new);
+        ModConstructor.construct(MetalBundles.MOD_ID, MetalBundles::new, ContentRegistrationFlags.LEGACY_SMITHING);
     }
 
     @SubscribeEvent

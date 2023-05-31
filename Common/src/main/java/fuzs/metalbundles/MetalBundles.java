@@ -28,7 +28,7 @@ public class MetalBundles implements ModConstructor {
 
     @Override
     public void onRegisterCreativeModeTabs(CreativeModeTabContext context) {
-        context.registerCreativeModeTab(CreativeModeTabConfigurator.from(MOD_ID).icon(() -> new ItemStack(ModRegistry.IRON_BUNDLE_ITEM.get())).displayItems((featureFlagSet, output, bl) -> {
+        context.registerCreativeModeTab(CreativeModeTabConfigurator.from(MOD_ID).icon(() -> new ItemStack(ModRegistry.IRON_BUNDLE_ITEM.get())).displayItems((itemDisplayParameters, output) -> {
             output.accept(ModRegistry.LEATHER_BUNDLE_ITEM.get());
             output.accept(ModRegistry.COPPER_BUNDLE_ITEM.get());
             output.accept(ModRegistry.IRON_BUNDLE_ITEM.get());

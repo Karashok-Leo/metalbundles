@@ -1,5 +1,9 @@
 package fuzs.metalbundles;
 
+import fuzs.metalbundles.data.ModItemContainerProvider;
+import fuzs.metalbundles.data.ModLanguageProvider;
+import fuzs.metalbundles.data.ModModelProvider;
+import fuzs.metalbundles.data.ModRecipeProvider;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -14,7 +18,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Mod(MetalBundles.MOD_ID)
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ExampleModForge {
+public class MetalBundlesForge {
 
     @SubscribeEvent
     public static void onConstructMod(final FMLConstructModEvent evt) {
@@ -27,5 +31,9 @@ public class ExampleModForge {
         final PackOutput packOutput = dataGenerator.getPackOutput();
         final CompletableFuture<HolderLookup.Provider> lookupProvider = evt.getLookupProvider();
         final ExistingFileHelper fileHelper = evt.getExistingFileHelper();
+        dataGenerator.addProvider(true, new ModItemContainerProvider(packOutput));
+        dataGenerator.addProvider(true, new ModLanguageProvider(packOutput, MetalBundles.MOD_ID));
+        dataGenerator.addProvider(true, new ModModelProvider(packOutput, MetalBundles.MOD_ID, fileHelper));
+        dataGenerator.addProvider(true, new ModRecipeProvider(packOutput));
     }
 }

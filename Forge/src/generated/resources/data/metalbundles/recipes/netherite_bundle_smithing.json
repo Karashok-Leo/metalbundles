@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "base": {
+    "item": "metalbundles:diamond_bundle"
+  },
+  "result": {
+    "item": "metalbundles:netherite_bundle"
+  }
+}

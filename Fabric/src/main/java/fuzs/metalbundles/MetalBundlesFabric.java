@@ -3,7 +3,7 @@ package fuzs.metalbundles;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import net.fabricmc.api.ModInitializer;
 
-public class ExampleModFabric implements ModInitializer {
+public class MetalBundlesFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {

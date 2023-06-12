@@ -30,5 +30,6 @@
     "recipes": [
       "metalbundles:copper_bundle_smithing_transform"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

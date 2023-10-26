@@ -18,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
@@ -87,9 +88,13 @@ public class MetalBundleItem extends Item {
     }
 
     public static int getContentWeight(ItemStack containerStack) {
+        return getContentWeight(containerStack, Proxy.INSTANCE.getClientPlayer());
+    }
+
+    public static int getContentWeight(ItemStack containerStack, @Nullable Player player) {
         ItemContainerProvider provider = ContainerItemHelper.INSTANCE.getItemContainerProvider(containerStack);
         Objects.requireNonNull(provider, "provider is null");
-        return getContentWeight(provider, containerStack, Proxy.INSTANCE.getClientPlayer());
+        return getContentWeight(provider, containerStack, player);
     }
 
     public static int getContentWeight(ItemContainerProvider provider, ItemStack containerStack, Player player) {
@@ -101,7 +106,7 @@ public class MetalBundleItem extends Item {
 
     public static int getItemWeight(ItemStack stack) {
         if (stack.getItem() instanceof MetalBundleItem item) {
-            return item.capacity / 16 + getContentWeight(stack);
+            return item.capacity / 16 + getContentWeight(stack, null);
         } else {
             return ContainerItemHelper.INSTANCE.getItemWeight(stack);
         }
